@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0a0f;
+  --card: #13131c;
+  --elevated: #1b1b28;
+  --border: #2a2a3c;
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-deep: #5b21b6;
+  --glow: rgba(139, 92, 246, 0.25);
+  --accent: #ec4899;
+  --text: #f4f4f8;
+  --text-secondary: #a1a1b5;
+  --text-muted: #6b6b80;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --gradient: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a3c transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #2a2a3c;
+  border-radius: 999px;
+}
+
+@layer components {
+  .glass {
+    background: rgba(19, 19, 28, 0.78);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(42, 42, 60, 0.9);
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-line bg-elevated px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-muted outline-none transition;
+    @apply focus:border-primary focus:shadow-glow-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold text-white shadow-glow transition;
+    background-image: var(--gradient);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.08);
+  }
+
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line bg-elevated px-4 py-2.5 text-sm font-medium text-ink-secondary transition hover:border-primary hover:text-ink hover:shadow-glow-sm disabled:opacity-40;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-danger px-4 py-2.5 text-sm font-semibold text-white transition hover:brightness-110;
+  }
+}
